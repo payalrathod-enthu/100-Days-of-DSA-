@@ -1,28 +1,29 @@
 #include <stdio.h>
 
-int findMissing(int arr[], int size) {
-    int n = size + 1;  // because one number is missing
+int main() {
+    int n, i;
+    
+    printf("Enter size of array (n-1): ");
+    scanf("%d", &n);
 
-    // Expected sum from 1 to n
-    long long expectedSum = (long long)n * (n + 1) / 2;
-
-    // Actual sum of array
-    long long actualSum = 0;
-    for (int i = 0; i < size; i++) {
-        actualSum += arr[i];
+    int arr[n];
+    printf("Enter elements:\n");
+    for(i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
     }
 
-    // Missing number
-    return (int)(expectedSum - actualSum);
-}
+    int total = (n + 1) * (n + 2) / 2;   // sum from 1 to n+1
+    int sum = 0;
 
-int main() {
-    int arr[] = {1, 2, 3, 5};
-    int size = sizeof(arr) / sizeof(arr[0]);
+    for(i = 0; i < n; i++) {
+        sum += arr[i];
+    }
 
-    int missing = findMissing(arr, size);
-    printf("Missing number is: %d\n", missing);
+    int missing = total - sum;
+
+    printf("Missing number is: %d", missing);
 
     return 0;
 }
+
 
